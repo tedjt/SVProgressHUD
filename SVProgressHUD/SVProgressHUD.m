@@ -455,7 +455,7 @@ static const CGFloat SVProgressHUDRingThickness = 6;
             }
     }
     
-    if(!self.superview)
+    if(!self.superview || self.overlayView != self.superview)
         [self.overlayView addSubview:self];
     
     self.fadeOutTimer = nil;
@@ -766,7 +766,7 @@ static const CGFloat SVProgressHUDRingThickness = 6;
         stringLabel.numberOfLines = 0;
     }
     
-    if(!stringLabel.superview)
+    if(!stringLabel.superview || stringLabel.superview != self.hudView)
         [self.hudView addSubview:stringLabel];
     
     return stringLabel;
@@ -776,7 +776,7 @@ static const CGFloat SVProgressHUDRingThickness = 6;
     if (imageView == nil)
         imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
     
-    if(!imageView.superview)
+    if(!imageView.superview || imageView.superview != self.hudView)
         [self.hudView addSubview:imageView];
     
     return imageView;
@@ -792,7 +792,7 @@ static const CGFloat SVProgressHUDRingThickness = 6;
             spinnerView.color = self.hudForegroundColor;
     }
     
-    if(!spinnerView.superview)
+    if(!spinnerView.superview || spinnerView.superview != self.hudView)
         [self.hudView addSubview:spinnerView];
     
     return spinnerView;
